@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,7 +18,7 @@ namespace Vidly.Controllers
         {
             return PartialView();
         }
-
+    
         // GET: url/Risk/AddRisk
         [HttpPost]
         public ActionResult AddRisk(Risk risk)
@@ -63,6 +64,34 @@ namespace Vidly.Controllers
         {
             return View();
         }
+
+        public void ExportRiskTableToCSV()
+        {
+
+            StringWriter sw = new StringWriter();
+
+            sw.WriteLine("\"Risk\",\"Category\",\"Probability\",\"Impact\"");
+
+            Response.ClearContent();
+            Response.AddHeader("content-disposition", "attachment;filename=RiskTable.csv");
+            Response.ContentType = "text/csv";
+
+            foreach (var line in GlobalVariables.glob_risk_list)
+            {
+                sw.WriteLine(string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\"\"{4}\"",
+                                           line.risk_name,
+                                           line.risk_category,
+                                           line.risk_probability,
+                                           line.risk_impact,
+                                           line.risk_RMMM));
+            }
+
+            Response.Write(sw.ToString());
+
+            Response.End();
+
+        }
+
 
     }
 }
