@@ -1,0 +1,30 @@
+﻿@model List<Vidly.Models.Risk>
+
+@{int list_position = 0; }
+
+
+<<h2>Table Preview</h2>
+
+<table>
+    <tr>
+        <th>Risk</th>
+        <th>Category</th>
+        <th>Probability</th>
+        <th>Impact</th>
+        <th>RMMM</th>
+    </tr>
+    @foreach (var risk in Model)
+    {
+        <tr>
+            <td>@risk.risk_name</td>
+            <td>@risk.risk_category</td>
+            <td>@risk.risk_probability%</td>
+            <td>@risk.risk_impact</td>
+            <td>@risk.risk_RMMM</td>
+            <td>@list_position</td>
+
+            <td>@Html.ActionLink("DeleteRisk", "DeleteRisk", new { id = list_position })</td>
+        </tr>
+        list_position++;
+    }
+</table>

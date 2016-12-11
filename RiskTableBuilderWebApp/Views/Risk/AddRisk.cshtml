@@ -1,0 +1,35 @@
+﻿@model Vidly.Models.Risk
+
+
+<h2>AddRisk</h2>
+
+@using (Html.BeginForm("AddRisk", "Risk", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <th>Risk</th>
+            <th>Category</th>
+            <th>Probability</th>
+            <th>Impact</th>
+            <th>RMMM</th>
+        </tr>
+    </table>
+
+    @Html.TextBoxFor(m => m.risk_name)
+    @Html.TextBoxFor(m => m.risk_category)
+    @Html.TextBoxFor(m => m.risk_probability)
+    @Html.TextBoxFor(m => m.risk_impact)
+    @Html.TextBoxFor(m => m.risk_RMMM)
+    <!--
+    <input type="password" name="Password" />
+    You can use HTML inputs, but it's more reliable to use strongly-typed MVC helpers.
+    -->
+
+    <!--also a button of type submit-->
+    <input type="submit" value="AddRisk" />
+
+    <!--button -->
+    <input type="button" value="go somewhere elseeee" onclick="location.href='@Url.Action("Export", "Risk" )'" />
+
+
+}
