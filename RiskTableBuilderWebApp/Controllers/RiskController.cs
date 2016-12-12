@@ -16,6 +16,7 @@ namespace Vidly.Controllers
 
         public ActionResult AddRisk()
         {
+            //fdsafds
             return PartialView();
         }
     
