@@ -1,24 +1,33 @@
 ﻿@model Vidly.Models.Risk
-
-
 <h2>AddRisk</h2>
-
 @using (Html.BeginForm("AddRisk", "Risk", FormMethod.Post))
 {
     <table>
         <tr>
-            <th>Risk</th>
-            <th>Category</th>
-            <th>Probability</th>
-            <th>Impact</th>
-            <th>RMMM</th>
+            <th>Risk &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th>Category &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th>Probability &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th>Impact &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th>RMMM </th>
         </tr>
     </table>
 
     @Html.TextBoxFor(m => m.risk_name)
+    <style>
+        padding=25px;
+    </style>
     @Html.TextBoxFor(m => m.risk_category)
+    <style>
+        padding=25px;
+    </style>
     @Html.TextBoxFor(m => m.risk_probability)
+    <style>
+        padding: 25px;
+    </style>
     @Html.TextBoxFor(m => m.risk_impact)
+    <style>
+        padding: 25px;
+    </style>
     @Html.TextBoxFor(m => m.risk_RMMM)
     <!--
     <input type="password" name="Password" />
@@ -26,10 +35,10 @@
     -->
 
     <!--also a button of type submit-->
-    <input type="submit" value="AddRisk" />
+    <input type="submit" value="Add Risk" />
 
     <!--button -->
-    <input type="button" value="go somewhere elseeee" onclick="location.href='@Url.Action("Export", "Risk" )'" />
+    <input type="button" value="Create Table" onclick="location.href='@Url.Action("Export", "Risk" )'" />
 
 
 }
