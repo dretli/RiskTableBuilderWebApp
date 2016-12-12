@@ -3,14 +3,14 @@
 @{int list_position = 0; }
 
 
-<<h2>Table Preview</h2>
+<h2>Table Preview</h2>
 
 <table>
     <tr>
-        <th>Risk</th>
-        <th>Category</th>
-        <th>Probability</th>
-        <th>Impact</th>
+        <th>Risk &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th>Category&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th>Probability&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th>Impact&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
         <th>RMMM</th>
     </tr>
     @foreach (var risk in Model)
@@ -23,7 +23,7 @@
             <td>@risk.risk_RMMM</td>
             <td>@list_position</td>
 
-            <td>@Html.ActionLink("DeleteRisk", "DeleteRisk", new { id = list_position })</td>
+            <td>@Html.ActionLink("Delete Risk", "Delete Risk", new { id = list_position })</td>
         </tr>
         list_position++;
     }

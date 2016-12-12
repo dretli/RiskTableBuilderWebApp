@@ -5,8 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
-
-
+using System.Web.UI;
 
 namespace Vidly.Controllers
 {
@@ -19,7 +18,7 @@ namespace Vidly.Controllers
             //fdsafds
             return PartialView();
         }
-    
+
         // GET: url/Risk/AddRisk
         [HttpPost]
         public ActionResult AddRisk(Risk risk)
@@ -93,6 +92,35 @@ namespace Vidly.Controllers
 
         }
 
+        public void ExportRiskTableToXLS()
+        {
+            var grid = new System.Web.UI.WebControls.GridView();
 
+            grid.DataSource = /*from d in dbContext.diners
+                              where d.user_diners.All(m => m.user_id == userID) && d.active == true */
+                              from line in GlobalVariables.glob_risk_list
+                              select new
+                              {
+                                  RiskName = line.risk_name,
+                                  RiskCategory = line.risk_category,
+                                  RiskProbability = line.risk_probability,
+                                  RiskImpact = line.risk_impact,
+                                  RiskRMMM = line.risk_RMMM
+                              };
+
+            grid.DataBind();
+
+            Response.ClearContent();
+            Response.AddHeader("content-disposition", "attachment; filename=RiskTable.xls");
+            Response.ContentType = "application/excel";
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter htw = new HtmlTextWriter(sw);
+
+            grid.RenderControl(htw);
+
+            Response.Write(sw.ToString());
+
+            Response.End();
+        }
     }
 }
