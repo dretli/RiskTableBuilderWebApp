@@ -4,31 +4,39 @@
 {
     <table>
         <tr>
-            <th>Risk &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-            <th>Category &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-            <th>Probability &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-            <th>Impact &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-            <th>RMMM </th>
+            <th align="left">Risk</th>
+            <th align="left">Category</th>
+            <th align="left">Probability</th>
+            <th align="left">Impact</th>
+            <th align="left">RMMM </th>
         </tr>
-    </table>
 
-    @Html.TextBoxFor(m => m.risk_name)
-    <style>
-        padding=25px;
-    </style>
-    @Html.TextBoxFor(m => m.risk_category)
-    <style>
-        padding=25px;
-    </style>
-    @Html.TextBoxFor(m => m.risk_probability)
-    <style>
-        padding: 25px;
-    </style>
-    @Html.TextBoxFor(m => m.risk_impact)
-    <style>
-        padding: 25px;
-    </style>
-    @Html.TextBoxFor(m => m.risk_RMMM)
+        <td>
+            @Html.TextBoxFor(m => m.risk_name)
+            <style>
+                padding=25px;
+            </style>
+        </td>
+        <td>
+        @Html.TextBoxFor(m => m.risk_category)
+        <style>
+            padding=25px;
+        </style>
+            </td>
+        <td>
+        @Html.TextBoxFor(m => m.risk_probability)
+        <style>
+            padding: 25px;
+        </style>
+            </td>
+        <td>
+        @Html.TextBoxFor(m => m.risk_impact)
+        <style>
+            padding: 25px;
+        </style>
+            </td>
+        <td>@Html.TextBoxFor(m => m.risk_RMMM)</td>
+    </table>
     <!--
     <input type="password" name="Password" />
     You can use HTML inputs, but it's more reliable to use strongly-typed MVC helpers.

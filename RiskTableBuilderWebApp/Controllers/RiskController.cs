@@ -1,11 +1,14 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
 using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data;
+using System.Xml.Linq;
 
 namespace Vidly.Controllers
 {
@@ -121,6 +124,6 @@ namespace Vidly.Controllers
             Response.Write(sw.ToString());
 
             Response.End();
-        }
+        }      
     }
 }
