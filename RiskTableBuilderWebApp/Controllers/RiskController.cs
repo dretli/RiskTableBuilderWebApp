@@ -32,7 +32,7 @@ namespace Vidly.Controllers
         {
             GlobalVariables.glob_risk_list.RemoveAt(id);
             //return RedirectToAction("AddRisk", "Risk");
-            return RedirectToAction("BuildRiskTable", "Risk");
+            return RedirectToAction("BuildRiskTable", "Risk"); //need to fix this
         }
 
         // GET: url/Risk/DisplayRiskTable
