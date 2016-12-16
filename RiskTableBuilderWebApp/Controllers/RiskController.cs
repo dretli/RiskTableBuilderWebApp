@@ -26,9 +26,16 @@ namespace Vidly.Controllers
         [HttpPost]
         public ActionResult AddRisk(Risk risk)
         {
-            GlobalVariables.glob_risk_list.Add(risk);
-            //return View();
+            if (CheckRisk(risk) == true)
+            {
+                GlobalVariables.glob_risk_list.Add(risk);
+
+                //return View();
+
+               
+            }
             return RedirectToAction("BuildRiskTable", "Risk");
+            //else
         }
 
         public ActionResult DeleteRisk(int id)
@@ -131,6 +138,19 @@ namespace Vidly.Controllers
 
             GlobalVariables.glob_risk_list.Clear();
             return RedirectToAction("BuildRiskTable", "Risk"); //need to fix this
+        }
+
+
+        //Function to validate the inputs
+        public bool CheckRisk(Risk risk)
+        {
+            if (risk.risk_name.Length <= 50 )
+            {
+                return true;
+            }
+
+
+            return false;
         }
     }
 }
