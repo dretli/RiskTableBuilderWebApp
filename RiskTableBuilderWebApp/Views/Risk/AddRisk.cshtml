@@ -45,8 +45,30 @@
     <!--also a button of type submit-->
     <input type="submit" value="Add Risk" />
 
+     <!--Button for Clear Form-->
+    <input type="button" value="Clear Form" onclick="location.href='@Url.Action("BuildRiskTable", "Risk")'" />
+
     <!--button -->
     <input type="button" value="Create Table" onclick="location.href='@Url.Action("Export", "Risk" )'" />
+
+    <!--Help Button-->
+   
+        <button type="button"  data-toggle="collapse" data-target="#helpButton">Help</button>
+        <div id="helpButton" class="collapse">
+            <h4>Risk</h4>
+            <p></p>
+            <h4>Category</h4>
+            <p></p>
+            <h4>Probability</h4>
+            <p></p>
+            <h4>Impact</h4>
+            <p></p>
+            <h4>RMMM(RM3)</h4>
+            <p></p>
+        </div>
+   
+
+
 
 
 }
