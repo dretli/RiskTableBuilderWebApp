@@ -42,8 +42,7 @@ namespace Vidly.Controllers
         public ActionResult DisplayRiskTable()     //returns action result, in this case its a ViewResult
         {
             //Sorts the list by impact then by probability
-            GlobalVariables.glob_risk_list = GlobalVariables.glob_risk_list.OrderBy(s => s.risk_impact).ThenBy(s => s.risk_probability).ToList();
-            GlobalVariables.glob_risk_list.Reverse();
+            GlobalVariables.glob_risk_list = GlobalVariables.glob_risk_list.OrderBy(s => s.risk_impact).ThenByDescending(s => s.risk_probability).ToList();
 
             return PartialView(GlobalVariables.glob_risk_list);
 

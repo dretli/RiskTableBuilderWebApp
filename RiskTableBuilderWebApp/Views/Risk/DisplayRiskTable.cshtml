@@ -28,3 +28,8 @@
         list_position++;
     }
 </table>
+
+@if (!@Model.Any())
+{
+    <t>Table preview is empty.</t>
+}
