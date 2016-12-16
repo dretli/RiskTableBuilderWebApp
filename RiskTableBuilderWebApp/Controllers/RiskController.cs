@@ -124,6 +124,14 @@ namespace Vidly.Controllers
             Response.Write(sw.ToString());
 
             Response.End();
-        }      
+        }
+
+
+        public ActionResult ClearRiskTable()
+        {
+
+            GlobalVariables.glob_risk_list.Clear();
+            return RedirectToAction("BuildRiskTable", "Risk"); //need to fix this
+        }
     }
 }
