@@ -13,10 +13,9 @@ namespace Vidly.Models
     public class Risk
     {
         public string risk_name { get; set; }
-        public string risk_description { get; set; }
         public string risk_category { get; set; }
         public short risk_probability { get; set; }
-        public char risk_impact { get; set; }
+        public short risk_impact { get; set; }
         public string risk_RMMM { get; set; }
     }
 }

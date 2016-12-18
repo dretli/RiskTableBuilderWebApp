@@ -18,7 +18,6 @@ namespace Vidly.Controllers
 
         public ActionResult AddRisk()
         {
-            //fdsafds
             return PartialView();
         }
 
@@ -26,16 +25,17 @@ namespace Vidly.Controllers
         [HttpPost]
         public ActionResult AddRisk(Risk risk)
         {
-            if (CheckRisk(risk) == true)
+            if (RiskValid(risk) == true)
             {
                 GlobalVariables.glob_risk_list.Add(risk);
-
-                //return View();
-
+            }
+            else
+            {
                
+                //ERROR MESSAGE STUFF HERE
+
             }
             return RedirectToAction("BuildRiskTable", "Risk");
-            //else
         }
 
         public ActionResult DeleteRisk(int id)
@@ -142,15 +142,54 @@ namespace Vidly.Controllers
 
 
         //Function to validate the inputs
-        public bool CheckRisk(Risk risk)
+        public bool RiskValid(Risk risk)
         {
-            if (risk.risk_name.Length <= 50 )
-            {
-                return true;
-            }
+            //Check Risk Name
+                //Required input
+                //length must be less than 50
+            if (risk.risk_name == null)
+                return false;
+            if (risk.risk_name.Length > 50)
+                return false;
 
 
-            return false;
+            //Check Risk Category
+                //Required input
+                //Alpha only
+                //length less than 5?
+            if (risk.risk_category == null)
+                return false;
+            if (!risk.risk_category.All(Char.IsLetter))
+                return false;
+            if (risk.risk_category.Length > 5)
+                return false;
+
+
+
+            //Check Risk Probability'
+                //Required input
+                //numeric only
+                //must be number between 1 and 100
+            //if (risk.risk_probability
+            //    return false;
+            //if (!risk.risk_probability.All(Char.IsNumber))
+            //    return false;
+           if (!(risk.risk_probability >= 1 && risk.risk_probability <= 100))
+                return false;
+
+
+
+            //Check Risk Impact
+                //must be int 1,2,3,4
+            if (!(risk.risk_impact >= 1 && risk.risk_impact <= 4))
+                return false;
+
+
+            //Check RMMM
+            //Not Sure
+
+
+            return true;
         }
     }
 }
