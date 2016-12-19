@@ -275,6 +275,7 @@
     <Content Include="Views\Risk\DisplayRiskTable.cshtml" />
     <Content Include="Views\Risk\Export.cshtml" />
     <Content Include="Views\Risk\BuildRiskTableError.cshtml" />
+    <Content Include="Views\Risk\ClearRiskTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

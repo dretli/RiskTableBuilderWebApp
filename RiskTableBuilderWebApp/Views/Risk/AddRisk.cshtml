@@ -41,10 +41,6 @@
             </td>
         <td>@Html.TextBoxFor(m => m.risk_RMMM)</td>
     </table>
-    <!--
-    <input type="password" name="Password" />
-    You can use HTML inputs, but it's more reliable to use strongly-typed MVC helpers.
-    -->
 
     <!--also a button of type submit-->
     <input type="submit" value="Add Risk" />
@@ -66,15 +62,16 @@
                     So in the Risk textbox the simple input of "Funding may be Lost" would suffice.</p>
 
             <h4>Category</h4>
-           <p></p>
+           <p>This is the category of the risk. Usually an abbreviation is used that is determined by the team. (Up to 4 characters)</p>
             
 
             <h4>Probability</h4>
-            <p></p>
+            <p>This is the probability that the risk will happen. (Between 1 and 100 percent)</p>
+            <p>A risk that is likely to happen will have a high probability.</p>
             <h4>Impact</h4>
-            <p></p>
+            <p>This is the impact the risk will have on the software. A higher number has a more harmful impact. (Numbers 1 through 4)</p>
             <h4>RMMM(RM3)</h4>
-            <p>This is an optional field to fill in. This pointer will reference</p>
+            <p>This is an optional field to fill in. This pointer will reference the risk in more detail on it's place on the Risk Information Sheet</p>
         </div>
    
 

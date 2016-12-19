@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "ClearRiskTable";
+}
+
+<h2>Clear Risk Table</h2>
+<p> By clicking yes, you will begin creation of a new risk table. This will delete your current risk table.</p>
+<p> If you want to save your table before creating a new one, you can export your risk table on the previous page. Click No.</p>
+
+@Html.ActionLink("Yes", "CreateNewRiskTable")
+@Html.ActionLink("No", "Export")
+
