@@ -6,6 +6,7 @@
 
 <h2>Export</h2>
 @Html.Action("DisplayRiskTable", "Risk")
+<input type="button" value="Edit Table" onclick="location.href='@Url.Action("BuildRiskTable", "Risk")'" />
 <p>@Html.ActionLink("Export to Csv", "ExportRiskTableToCSV")</p>
 <p>@Html.ActionLink("Export to Xls", "ExportRiskTableToXLS")</p>
 <p>@Html.ActionLink("Create New Table", "ClearRiskTable")</p>

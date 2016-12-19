@@ -76,7 +76,7 @@ namespace Vidly.Controllers
 
             StringWriter sw = new StringWriter();
 
-            sw.WriteLine("\"Risk\",\"Category\",\"Probability\",\"Impact\"");
+            sw.WriteLine("\"Risk\",\"Category\",\"Probability\",\"Impact\",\"RMMM\" ");
 
             Response.ClearContent();
             Response.AddHeader("content-disposition", "attachment;filename=RiskTable.csv");
@@ -84,7 +84,7 @@ namespace Vidly.Controllers
 
             foreach (var line in GlobalVariables.glob_risk_list)
             {
-                sw.WriteLine(string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\"\"{4}\"",
+                sw.WriteLine(string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\"",
                                            line.risk_name,
                                            line.risk_category,
                                            line.risk_probability,
