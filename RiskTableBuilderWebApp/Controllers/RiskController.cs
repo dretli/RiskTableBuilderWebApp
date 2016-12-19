@@ -181,8 +181,8 @@ namespace Vidly.Controllers
 
             //Check Risk Impact
                 //must be int 1,2,3,4
-            if (!(risk.risk_impact >= 1 && risk.risk_impact <= 4))
-                return 4;
+           // if (!(risk.risk_impact >= 1 && risk.risk_impact <= 4))
+              //  return 4;
 
 
             //Check RMMM

@@ -1,7 +1,5 @@
 ﻿@model Vidly.Models.Risk
-
-
-
+@using Vidly.Models
 
 <h2>Add Risk</h2>
 @using (Html.BeginForm("AddRisk", "Risk", FormMethod.Post))
@@ -22,7 +20,20 @@
             </style>
         </td>
         <td>
-        @Html.TextBoxFor(m => m.risk_category)
+       @{var CategoryItems = new List<SelectListItem>
+            {
+                    new SelectListItem { Text = "PS", Value="PS" },         //product size
+                    new SelectListItem { Text = "BU", Value="BU" },   //business impact
+                    new SelectListItem { Text = "SC", Value="SC" },   //stakeholder characteristics
+                    new SelectListItem { Text = "PD", Value="PD" },   //process definition
+                    new SelectListItem { Text = "DE", Value="DE" },   //Development environment
+                    new SelectListItem { Text = "TE", Value="TE" },   //Technology to be built
+                    new SelectListItem { Text = "ST", Value="ST" }    //staff size and experience
+            };
+        }
+        @Html.DropDownListFor(m => m.risk_category, new SelectList(CategoryItems, "Value", "Text"))
+
+
         <style>
             padding=25px;
         </style>
@@ -34,7 +45,15 @@
         </style>
             </td>
         <td>
-        @Html.TextBoxFor(m => m.risk_impact)
+        @{var ImpactItems = new List<SelectListItem>
+            {
+                    new SelectListItem { Text = "1-Catastrophic", Value= "1" },         //product size
+                    new SelectListItem { Text = "2-Critical", Value= "2" },   //business impact
+                    new SelectListItem { Text = "3-Marginal", Value= "3" },   //stakeholder characteristics
+                    new SelectListItem { Text = "4-Negligible", Value= "4" },   //process definition
+            };
+        }
+        @Html.DropDownListFor(m => m.risk_impact, new SelectList(ImpactItems, "Value", "Text"))
         <style>
             padding: 25px;
         </style>

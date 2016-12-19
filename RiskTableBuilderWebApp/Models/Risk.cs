@@ -9,6 +9,7 @@ namespace Vidly.Models
     {
         public static List<Risk> glob_risk_list = new List<Risk>();
         public static int glob_error_code = 0;
+        
     }
 
     public class Risk
@@ -16,7 +17,9 @@ namespace Vidly.Models
         public string risk_name { get; set; }
         public string risk_category { get; set; }
         public short risk_probability { get; set; }
-        public short risk_impact { get; set; }
+        public string risk_impact { get; set; }
         public string risk_RMMM { get; set; }
     }
+
+    public struct ImpactListItem { public string Text; public int Value; }
 }
