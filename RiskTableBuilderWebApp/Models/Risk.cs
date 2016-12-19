@@ -8,6 +8,7 @@ namespace Vidly.Models
     public static class GlobalVariables
     {
         public static List<Risk> glob_risk_list = new List<Risk>();
+        public static int glob_error_code = 0;
     }
 
     public class Risk

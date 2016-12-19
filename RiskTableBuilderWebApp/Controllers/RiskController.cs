@@ -23,9 +23,11 @@ namespace Vidly.Controllers
         [HttpPost]
         public ActionResult AddRisk(Risk risk)
         {
-            int error_code = 0;
-            error_code = RiskValid(risk);
-            if (error_code == 0) //no error
+            //int error_code = 0;
+            //error_code = RiskValid(risk);
+
+            GlobalVariables.glob_error_code = RiskValid(risk);
+            if (GlobalVariables.glob_error_code == 0) //no error
             {
                 GlobalVariables.glob_risk_list.Add(risk);
                 return RedirectToAction("BuildRiskTable", "Risk");
@@ -33,7 +35,7 @@ namespace Vidly.Controllers
             else //error
             {
                 //return RedirectToAction("BuildRiskTableError", "Risk", new { id = error_code });
-                TempData["EC"] = error_code; //Temp data stores the error code
+                //TempData["EC"] = error_code; //Temp data stores the error code
                 return RedirectToAction("BuildRiskTableError", "Risk");
             }
         }
@@ -60,8 +62,8 @@ namespace Vidly.Controllers
 
         public ActionResult BuildRiskTableError()
         {
-            int error_code = (int)TempData["EC"]; //retrieves the error code saved in temp data
-            return View(error_code);
+            //int error_code = (int)TempData["EC"]; //retrieves the error code saved in temp data
+            return View(GlobalVariables.glob_error_code);
         }
 
         public ActionResult Export()
@@ -184,9 +186,9 @@ namespace Vidly.Controllers
 
 
             //Check RMMM
-            //Not Sure
+            //Length max is 5
             if(risk.risk_RMMM != null)
-                if (risk.risk_RMMM.Length >= 5)
+                if (risk.risk_RMMM.Length > 5)
                     return 5;
 
 
