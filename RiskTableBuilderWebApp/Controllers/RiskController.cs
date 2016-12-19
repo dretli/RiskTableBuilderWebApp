@@ -21,21 +21,22 @@ namespace Vidly.Controllers
             return PartialView();
         }
 
-        // GET: url/Risk/AddRisk
         [HttpPost]
         public ActionResult AddRisk(Risk risk)
         {
-            if (RiskValid(risk) == true)
+            int error_code = 0;
+            error_code = RiskValid(risk);
+            if (error_code == 0) //no error
             {
                 GlobalVariables.glob_risk_list.Add(risk);
+                return RedirectToAction("BuildRiskTable", "Risk");
             }
-            else
+            else //error
             {
-               
-                //ERROR MESSAGE STUFF HERE
-
+                //return RedirectToAction("BuildRiskTableError", "Risk", new { id = error_code });
+                TempData["EC"] = error_code; //Temp data stores the error code
+                return RedirectToAction("BuildRiskTableError", "Risk");
             }
-            return RedirectToAction("BuildRiskTable", "Risk");
         }
 
         public ActionResult DeleteRisk(int id)
@@ -45,7 +46,6 @@ namespace Vidly.Controllers
             return RedirectToAction("BuildRiskTable", "Risk"); //need to fix this
         }
 
-        // GET: url/Risk/DisplayRiskTable
         public ActionResult DisplayRiskTable()     //returns action result, in this case its a ViewResult
         {
             //Sorts the list by impact then by probability
@@ -67,6 +67,12 @@ namespace Vidly.Controllers
         public ActionResult BuildRiskTable()
         {
             return View();
+        }
+
+        public ActionResult BuildRiskTableError()
+        {
+            int error_code = (int)TempData["EC"]; //retrieves the error code saved in temp data
+            return View(error_code);
         }
 
         public ActionResult Export()
@@ -132,25 +138,22 @@ namespace Vidly.Controllers
             Response.End();
         }
 
-
         public ActionResult ClearRiskTable()
         {
-
             GlobalVariables.glob_risk_list.Clear();
             return RedirectToAction("BuildRiskTable", "Risk"); //need to fix this
         }
 
-
-        //Function to validate the inputs
-        public bool RiskValid(Risk risk)
+        //Returns error code if error, or 0 if no error
+        public int RiskValid(Risk risk)
         {
             //Check Risk Name
                 //Required input
                 //length must be less than 50
             if (risk.risk_name == null)
-                return false;
+                return 1;
             if (risk.risk_name.Length > 50)
-                return false;
+                return 1;
 
 
             //Check Risk Category
@@ -158,11 +161,11 @@ namespace Vidly.Controllers
                 //Alpha only
                 //length less than 5?
             if (risk.risk_category == null)
-                return false;
+                return 2;
             if (!risk.risk_category.All(Char.IsLetter))
-                return false;
+                return 2;
             if (risk.risk_category.Length > 5)
-                return false;
+                return 2;
 
 
 
@@ -175,21 +178,24 @@ namespace Vidly.Controllers
             //if (!risk.risk_probability.All(Char.IsNumber))
             //    return false;
            if (!(risk.risk_probability >= 1 && risk.risk_probability <= 100))
-                return false;
+                return 3;
 
 
 
             //Check Risk Impact
                 //must be int 1,2,3,4
             if (!(risk.risk_impact >= 1 && risk.risk_impact <= 4))
-                return false;
+                return 4;
 
 
             //Check RMMM
             //Not Sure
+            if(risk.risk_RMMM != null)
+                if (risk.risk_RMMM.Length >= 5)
+                    return 5;
 
 
-            return true;
+            return 0;
         }
     }
 }

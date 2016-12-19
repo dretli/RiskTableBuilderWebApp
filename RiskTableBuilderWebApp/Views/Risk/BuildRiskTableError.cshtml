@@ -1,0 +1,14 @@
+﻿@model int
+@{
+    ViewBag.Title = "BuildRiskTable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Build Risk Table</h2>
+<p>
+    ERROR CODE IS: @Model
+</p>
+
+@Html.Action("AddRisk", "Risk")
+@Html.Action("DisplayRiskTable", "Risk")
