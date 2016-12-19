@@ -20,7 +20,7 @@
             </style>
         </td>
         <td>
-       @{var CategoryItems = new List<SelectListItem>
+            @{var CategoryItems = new List<SelectListItem>
             {
                     new SelectListItem { Text = "PS", Value="PS" },         //product size
                     new SelectListItem { Text = "BU", Value="BU" },   //business impact
@@ -30,71 +30,85 @@
                     new SelectListItem { Text = "TE", Value="TE" },   //Technology to be built
                     new SelectListItem { Text = "ST", Value="ST" }    //staff size and experience
             };
-        }
-        @Html.DropDownListFor(m => m.risk_category, new SelectList(CategoryItems, "Value", "Text"))
+            }
+            @Html.DropDownListFor(m => m.risk_category, new SelectList(CategoryItems, "Value", "Text"))
 
 
-        <style>
-            padding=25px;
-        </style>
-            </td>
+            <style>
+                padding=25px;
+            </style>
+        </td>
         <td>
-        @Html.TextBoxFor(m => m.risk_probability)
-        <style>
-            padding: 25px;
-        </style>
-            </td>
+            @Html.TextBoxFor(m => m.risk_probability)
+            <style>
+                padding: 25px;
+            </style>
+        </td>
         <td>
-        @{var ImpactItems = new List<SelectListItem>
+            @{var ImpactItems = new List<SelectListItem>
             {
                     new SelectListItem { Text = "1-Catastrophic", Value= "1" },         //product size
                     new SelectListItem { Text = "2-Critical", Value= "2" },   //business impact
                     new SelectListItem { Text = "3-Marginal", Value= "3" },   //stakeholder characteristics
                     new SelectListItem { Text = "4-Negligible", Value= "4" },   //process definition
             };
-        }
-        @Html.DropDownListFor(m => m.risk_impact, new SelectList(ImpactItems, "Value", "Text"))
-        <style>
-            padding: 25px;
-        </style>
-            </td>
+            }
+            @Html.DropDownListFor(m => m.risk_impact, new SelectList(ImpactItems, "Value", "Text"))
+            <style>
+                padding: 25px;
+            </style>
+        </td>
         <td>@Html.TextBoxFor(m => m.risk_RMMM)</td>
     </table>
 
     <!--also a button of type submit-->
-    <input type="submit" value="Add Risk" />
+                <input type="submit" value="Add Risk" />
 
      <!--Button for Clear Form-->
-    <input type="button" value="Clear Form" onclick="location.href='@Url.Action("BuildRiskTable", "Risk")'" />
+                <input type="button" value="Clear Form" onclick="location.href='@Url.Action("BuildRiskTable", "Risk")'" />
 
     <!--button -->
-    <input type="button" value="Create Table" onclick="location.href='@Url.Action("Export", "Risk" )'" />
+                <input type="button" value="Create Table" onclick="location.href='@Url.Action("Export", "Risk" )'" />
 
     <!--Help Button-->
-   
-        <button type="button"  data-toggle="collapse" data-target="#helpButton">Help</button>
-        <div id="helpButton" class="collapse">
 
-            <h4>Risk</h4>
-            <p>Here you want to classify the Risk name. (up to 50 Char.)</p>
-            <p>Example: You have been given funding by a certain investor. The investor has the option to backout at anytime if they feel the project is failing. 
-                    So in the Risk textbox the simple input of "Funding may be Lost" would suffice.</p>
+                <button type="button" data-toggle="collapse" data-target="#helpButton">Help</button>
+                <div id="helpButton" class="collapse">
 
-            <h4>Category</h4>
-           <p>This is the category of the risk. Usually an abbreviation is used that is determined by the team. (Up to 4 characters)</p>
-            
+                    <h4>Risk</h4>
+                    <p>Here you want to classify the Risk name/description. (up to 50 Char.)</p>
+                    <p>
+                        Example: You have been given funding by a certain investor. The investor has the option to backout at anytime if they feel the project is failing.
+                        So in the Risk textbox the simple input of "Funding may be Lost" would suffice.
+                    </p>
 
-            <h4>Probability</h4>
-            <p>This is the probability that the risk will happen. (Between 1 and 100 percent)</p>
-            <p>A risk that is likely to happen will have a high probability.</p>
-            <h4>Impact</h4>
-            <p>This is the impact the risk will have on the software. A higher number has a more harmful impact. (Numbers 1 through 4)</p>
-            <h4>RMMM(RM3)</h4>
-            <p>This is an optional field to fill in. This pointer will reference the risk in more detail on it's place on the Risk Information Sheet</p>
-        </div>
-   
+                    <h4>Category</h4>
+                    <p>This is the category of the risk.</p>
+                    <p>Product Size (PS) - risks associated with the overall size of the software to be built or modified.</p>
+                    <p>Business Impact (BU) - risks associated with constraints imposed by management or the marketplace.</p>
+                    <p>Stakeholder Characteristics (SC) - risks associated with the sophistication of the stakeholders and the developer's ability to communicate with staekholders in a timely manner.</p>
+                    <p>Process Definition (PD) - risks associated with the degree to which the software process has been defined and is followed by the development organization.</p>
+                    <p>Development Environment (DE) - risks associated with the availability and quality of the tools to be used to build the product.</p>
+                    <p>Technology to be Built (TE) - risks associated with the complexity of the system to be built and the "newness" of the technology that is packaged by the system.</p>
+                    <p>Staff Size and Experience (ST) - risks associated with the overall technical and project experience of the software engineers who will do the work.</p>
 
 
+                    <h4>Probability</h4>
+                    <p>This is the probability that the risk will happen. (Between 1 and 100 percent)</p>
+                    <p>Enter a number between 1 and 100 (inclusive)</p>
+                    <p>A risk that is likely to happen will have a high probability.</p>
+
+                    <h4>Impact</h4>
+                    <p>This is the impact the risk will have on the software. (Numbers 1 through 4)</p>
+                    <p>The lower the number, the greater the impact.</p>
+
+                    <h4>RMMM(RM3)</h4>
+                    <p>This is an optional field to fill in.</p>
+                    <p>An RM3 pointer is used to reference a Risk Information Sheet (RIS) that provides more detail about the risk.</p>
+                </div>
 
 
-}
+
+
+
+                }
